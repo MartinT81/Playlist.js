@@ -1,35 +1,17 @@
-"use strict";
+'use strict';
 
-const logger = require("../utils/logger");
-
-const sonatas = {
-  title: 'Sonatas',
-  songs: [
-    {
-      title: 'Piano Sonata No. 3',
-      artist: 'Beethoven',
-    },
-    {
-      title: 'Piano Sonata No. 7',
-      artist: 'Beethoven',
-    },
-    {
-      title: 'Piano Sonata No. 10',
-      artist: 'Beethoven',
-    },
-  ],
-};
-
+const logger = require('../utils/logger');
+const playlistCollection = require('../models/playlist-store.js');
 
 const dashboard = {
   index(request, response) {
-    logger.info("dashboard rendering");
+    logger.info('dashboard rendering');
     const viewData = {
-      title: "Playlist 1 Dashboard",
-      playlist: sonatas
+      title: 'Playlist Dashboard',
+      playlists: playlistCollection,
     };
-    logger.info('about to render', sonatas);
-    response.render("dashboard", viewData);
+    logger.info('about to render', playlistCollection);
+    response.render('dashboard', viewData);
   },
 };
 
