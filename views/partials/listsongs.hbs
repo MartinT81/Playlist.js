@@ -6,11 +6,15 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>
-      </td>
-      <td>
-      </td>
-    </tr>
+    {{#each playlist.songs}}
+      <tr>
+        <td>
+          {{title}}
+        </td>
+        <td>
+          {{artist}}
+        </td>
+      </tr>
+    {{/each}}
   </tbody>
 </table>
