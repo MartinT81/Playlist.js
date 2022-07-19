@@ -9,16 +9,11 @@ const playlistStore = {
     return this.playlistCollection;
   },
 
-  getPlaylist(id) {
-    let foundPlaylist = null;
-    for (let playlist of this.playlistCollection) {
-      if (id == playlist.id) {
-        foundPlaylist = playlist;
-      }
-    }
-
-    return foundPlaylist;
+ getPlaylist(id) {
+    return _.find(this.playlistCollection, { id: id });
   },
+    
+  
   removeSong(id, songId) {
     const playlist = this.getPlaylist(id);
     _.remove(playlist.songs, { id: songId });
