@@ -1,5 +1,6 @@
 'use strict';
 
+const _ = require('lodash');
 const playlistStore = {
 
   playlistCollection: require('./playlist-store.json').playlistCollection,
@@ -17,6 +18,10 @@ const playlistStore = {
     }
 
     return foundPlaylist;
+  },
+  removeSong(id, songId) {
+    const playlist = this.getPlaylist(id);
+    _.remove(playlist.songs, { id: songId });
   },
 };
 
