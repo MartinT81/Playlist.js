@@ -3,6 +3,7 @@
 const logger = require('../utils/logger');
 const playlistStore = require('../models/playlist-store');
 
+
 const playlist = {
   index(request, response) {
     const playlistId = request.params.id;
@@ -13,11 +14,25 @@ const playlist = {
     };
     response.render('playlist', viewData);
   },
+  
+  
     deleteSong(request, response) {
     const playlistId = request.params.id;
     const songId = request.params.songid;
     logger.debug(`Deleting Song ${songId} from Playlist ${playlistId}`);
     playlistStore.removeSong(playlistId, songId);
+    response.redirect('/playlist/' + playlistId);
+  },
+  
+  
+    addSong(request, response) {
+    const playlistId = request.params.id;
+    const playlist = playlistStore.getPlaylist(playlistId);
+    const newSong = {
+      title: request.body.title,
+      artist: request.body.artist,
+    };
+    playlistStore.addSong(playlistId, newSong);
     response.redirect('/playlist/' + playlistId);
   },
 };
