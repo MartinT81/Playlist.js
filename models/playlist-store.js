@@ -35,6 +35,12 @@ const playlistStore = {
   addSong(id, song) {
     const playlist = this.getPlaylist(id);
     playlist.songs.push(song);
+    
+    let duration =0;
+    for(let i=0; i < playlist.songs.lenght; i++){
+      duration += playlist.songs[i].duration;
+    }
+    playlist.duration = duration;
     this.store.save();
   },
 
