@@ -1,3 +1,16 @@
-getUserPlaylists (userid){
-  return this.store.findBy(this.collection, {userid: userid});
+{
+  "playlistCollection": [
+    {
+      "id": "1e6ed5a0-28fe-4527-8ce8-6cb5c800b5be",
+      "userid": "2b6f0989-7b7f-4a38-ad26-aa06b922d751",
+      "title": "marges playlist",
+      "songs": []
+    },
+    {
+      "id": "07dd66fe-9f8f-456c-944d-48330bde4610",
+      "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
+      "title": "homers playlist",
+      "songs": []
+    }
+  ]
 }
