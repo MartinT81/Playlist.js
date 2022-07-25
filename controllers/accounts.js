@@ -1,41 +1,37 @@
 'use strict';
 
 const userstore = require('../models/user-store');
-const logger = require ('../utils/logger');
+const logger = require('../utils/logger');
 const uuid = require('uuid');
 
 const accounts = {
-  index(request, response){
-     const viewData = {
-       titel : 'login or signup',
-     };
+
+  index(request, response) {
+    const viewData = {
+      title: 'Login or Signup',
+    };
     response.render('index', viewData);
-    
   },
-  
-  login(request, response){
+
+  login(request, response) {
     const viewData = {
-      titel: 'login to the service'
+      title: 'Login to the Service',
     };
-    response.render ('login', viewData);
-    
+    response.render('login', viewData);
   },
-  
-  logout (request, response){
+
+  logout(request, response) {
     response.cookie('playlist', '');
-    response.redirect ('/');
-    
+    response.redirect('/');
   },
-  
-  signup (request, response){
-    
+
+  signup(request, response) {
     const viewData = {
-      titel: 'login to the service',
+      title: 'Login to the Service',
     };
-    
-    response.render('signup',  viewData);
+    response.render('signup', viewData);
   },
-  
+
   register(request, response) {
     const user = request.body;
     user.id = uuid.v1();
@@ -43,8 +39,8 @@ const accounts = {
     logger.info(`registering ${user.email}`);
     response.redirect('/');
   },
-  
-    authenticate(request, response) {
+
+  authenticate(request, response) {
     const user = userstore.getUserByEmail(request.body.email);
     if (user) {
       response.cookie('playlist', user.email);
@@ -54,12 +50,11 @@ const accounts = {
       response.redirect('/login');
     }
   },
-  
-  getCurrentUser(request){
+
+  getCurrentUser(request) {
     const userEmail = request.cookies.playlist;
     return userstore.getUserByEmail(userEmail);
-    
   },
-  };
+};
 
 module.exports = accounts;
