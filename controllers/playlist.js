@@ -23,6 +23,7 @@ const playlist = {
     const viewData = {
       title: "Playlist",
       playlist: playlistStore.getPlaylist(playlistId)
+      shortestSong: shortestSong
     };
     response.render("playlist", viewData);
   },
