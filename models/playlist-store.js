@@ -54,6 +54,12 @@ const playlistStore = {
     getUserPlaylists(userid) {
     return this.store.findBy(this.collection, { userid: userid });
   },
+  
+  getSong(id,songId){
+    
+  const playlisr = this.store.findOneBy(this.collection, {id : id});
+    const 
+  },
 };
 
 module.exports = playlistStore;
