@@ -7,6 +7,7 @@ const dashboard = require('./controllers/dashboard.js');
 const about = require('./controllers/about.js');
 const playlist = require('./controllers/playlist.js');
 const accounts = require('./controllers/accounts.js');
+const song = require("./controllers/song.js");
 
 router.get('/', accounts.index);
 router.get('/login', accounts.login);
@@ -23,5 +24,7 @@ router.get('/about', about.index);
 router.get('/playlist/:id', playlist.index);
 router.get('/playlist/:id/deletesong/:songid', playlist.deleteSong);
 router.post('/playlist/:id/addsong', playlist.addSong);
+router.get("/song/:id/editsong/:songid", song.index);
+router.post("/song/:id/updatesong/:songid", song.update);
 
 module.exports = router;

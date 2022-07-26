@@ -10,7 +10,15 @@
       "id": "07dd66fe-9f8f-456c-944d-48330bde4610",
       "userid": "3ad52697-6d98-4d80-8273-084de55a86c0",
       "title": "homers playlist",
-      "songs": []
+      "songs": [
+        {
+          "id": "efc29250-0d0f-11ed-ae41-63fd4fea71f6",
+          "title": "Wexford",
+          "artist": "ddwd",
+          "duration": 2
+        }
+      ],
+      "duration": 0
     }
   ]
 }

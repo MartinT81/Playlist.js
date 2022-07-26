@@ -58,7 +58,15 @@ const playlistStore = {
   getSong(id,songId){
     
   const playlisr = this.store.findOneBy(this.collection, {id : id});
-    const 
+  const songs = playList.songs.filter(song => song.id == songId);
+    return songs [0];
+  },
+  
+  updateSong(song , updateSong){
+    
+    song.tite = updateSong.title;
+    song.artist = updateSong.artist;
+    song.duration = updateSong.duration;
   },
 };
 
