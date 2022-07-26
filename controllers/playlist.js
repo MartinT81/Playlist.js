@@ -3,6 +3,7 @@
 const logger = require("../utils/logger");
 const playlistStore = require("../models/playlist-store");
 const uuid = require('uuid');
+const playlistAnalytics = require("..utils/playlist-analytics");
 
 const playlist = {
   index(request, response) {
@@ -12,10 +13,14 @@ const playlist = {
     const playlist = playlistStore.getPlaylist(playlistId);
     const shortestSong = playlistAnalytics.getShortestSong(playlist);
     console.log(shortestSong);
-    const viewData = {
+    const duration = playlistAnalytics.getSHortestSong(playlist);
+   const viewData = {
       title: "Playlist",
-      playlist: playlistStore.getPlaylist(playlistId),
-      shortestSong: shortestSong
+      playlist: playlist,
+      playlistSummary : {
+        shortestSong : playlistAnalytics.getShortestSong(playlist),
+        duration : playlistAnalytics.getPlaylistDuration(playlist)
+      }
     };
     response.render("playlist", viewData);
   },
