@@ -55,19 +55,18 @@ const playlistStore = {
     return this.store.findBy(this.collection, { userid: userid });
   },
   
-  getSong(id,songId){
-    
-  const playlisr = this.store.findOneBy(this.collection, {id : id});
-  const songs = playList.songs.filter(song => song.id == songId);
-    return songs [0];
+  getSong(id, songId) {
+    const playList = this.store.findOneBy(this.collection, { id: id });
+    const songs = playList.songs.filter(song => song.id == songId);
+    return songs[0];
   },
-  
-  updateSong(song , updateSong){
-    
-    song.tite = updateSong.title;
-    song.artist = updateSong.artist;
-    song.duration = updateSong.duration;
-  },
+
+  updateSong(song, updatedSong) {
+    song.title = updatedSong.title;
+    song.artist = updatedSong.artist;
+    song.duration = updatedSong.duration;
+    this.store.save();
+  }
 };
 
 module.exports = playlistStore;
